@@ -45,7 +45,7 @@
         <div class="container">
             <!-- Logo container-->
             <div>
-                <a class="logo" href="index.html">
+                <a class="logo" href="{% url 'website:home' %}">
                     <img src="{% static 'images/logo-dark.png' %}" class="l-dark" height="24" alt="">
                     <img src="{% static 'images/logo-light.png' %}" class="l-light" height="24" alt="">
                 </a>
@@ -73,7 +73,7 @@
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu nav-light">
-                    <li><a href="index.html" class="sub-menu-item">صفحه اصلی </a></li>
+                    <li><a href="{% url 'website:home' %}" class="sub-menu-item">صفحه اصلی </a></li>
                     <li class="has-submenu parent-parent-menu-item">
                         <a href="javascript:void(0)">راهنمایی</a><span class="sub-menu-item"></span>
                     </li>
