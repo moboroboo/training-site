@@ -4,5 +4,5 @@ from django.http import HttpResponse
 def blog_view(request):
     return render(request, 'blog/blog_list.html')
 
-def single_view(request):
+def single_blog(request):
     return render(request, 'blog/blog_detail.html')
