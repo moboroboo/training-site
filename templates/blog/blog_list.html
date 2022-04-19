@@ -12,10 +12,8 @@
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
-                                <li class="breadcrumb-item"><a href="index.html">لنـدریـک </a></li>
-                                <li class="breadcrumb-item"><a href="#">صفحه </a></li>
-                                <li class="breadcrumb-item"><a href="#">وبلاگ </a></li>
-                                <li class="breadcrumb-item active" aria-current="page">وبلاگ با سایدبار</li>
+                                <li class="breadcrumb-item"><a href="{% url 'website:home' %}">صفحه اصلی </a></li>
+                                <li class="breadcrumb-item"><a href="{% url 'blog:blog_list' %}">وبلاگ </a></li>
                             </ul>
                         </nav>
                     </div>
@@ -47,196 +45,29 @@
             <!-- BLog Start -->
             <div class="col-lg-8 col-md-6">
                 <div class="row">
+                    {% for post in posts %}
                     <div class="col-lg-6 col-md-12 mb-4 pb-2">
                         <div class="card blog rounded border-0 shadow">
                             <div class="position-relative">
-                                <img src="{% static 'images/blog/01.jpg' %}" class="card-img-top rounded-top" alt="...">
+                                <img src="{{post.image.url}}" class="card-img-top rounded-top" alt="مرورگر خود را رفرش کنید">
                                 <div class="overlay rounded-top bg-dark"></div>
                             </div>
                             <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">برنامه های خود
-                                        را به روش خود طراحی کنید</a></h5>
+                                <h5><a href="{% url 'blog:blog_detail' pid=post.id %}" class="card-title title text-dark">{{post.title}}</a></h5>
                                 <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
+                                    
+                                    <a href="{% url 'blog:blog_detail' pid=post.id %}" class="text-muted readmore">ادامه مطلب <i
                                             class="uil uil-angle-left-b align-middle"></i></a>
                                 </div>
                             </div>
                             <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
+                                <small class="text-light user d-block"><i class="uil uil-user"></i>{{ post.author.get_full_name|default:post.author.username }}
+                                    </small>
+                                <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{post.jalali_date}}</small>
                             </div>
                         </div>
                     </div>
-                    <!--end col-->
-
-                    <div class="col-lg-6 col-md-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{% static 'images/blog/02.jpg' %}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">برنامه ها چگونه
-                                        دنیای اطلاعات را تغییر می دهند</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
-                                            class="uil uil-angle-left-b align-middle"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-6 col-md-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{% static 'images/blog/03.jpg' %}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">هوشمندترین
-                                        برنامه ها برای تجارت و کار </a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
-                                            class="uil uil-angle-left-b align-middle"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-6 col-md-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{% static 'images/blog/04.jpg' %}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">برنامه ها چگونه
-                                        دنیای اطلاعات را تغییر می دهند</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
-                                            class="uil uil-angle-left-b align-middle"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-6 col-md-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{% static 'images/blog/05.jpg' %}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">برنامه های خود
-                                        را به روش خود طراحی کنید</a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
-                                            class="uil uil-angle-left-b align-middle"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end col-->
-
-                    <div class="col-lg-6 col-md-12 mb-4 pb-2">
-                        <div class="card blog rounded border-0 shadow">
-                            <div class="position-relative">
-                                <img src="{% static 'images/blog/06.jpg' %}" class="card-img-top rounded-top" alt="...">
-                                <div class="overlay rounded-top bg-dark"></div>
-                            </div>
-                            <div class="card-body content">
-                                <h5><a href="javascript:void(0)" class="card-title title text-dark">هوشمندترین
-                                        برنامه ها برای تجارت و کار </a></h5>
-                                <div class="post-meta d-flex justify-content-between mt-3">
-                                    <ul class="list-unstyled mb-0">
-                                        <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                                class="text-muted like"><i class="uil uil-heart me-1"></i>33</a>
-                                        </li>
-                                        <li class="list-inline-item"><a href="javascript:void(0)"
-                                                class="text-muted comments"><i class="uil uil-comment me-1"></i>08</a>
-                                        </li>
-                                    </ul>
-                                    <a href="page-blog-detail.html" class="text-muted readmore">ادامه مطلب <i
-                                            class="uil uil-angle-left-b align-middle"></i></a>
-                                </div>
-                            </div>
-                            <div class="author">
-                                <small class="text-light user d-block"><i class="uil uil-user"></i> کالوین
-                                    لورس</small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i> اردیبهشت
-                                    1400</small>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                     <!--end col-->
 
                     <!-- PAGINATION START -->
