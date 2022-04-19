@@ -5,5 +5,5 @@ app_name = 'guide'
 
 urlpatterns = [
     path('', guide_view, name='guide_list'),
-    path('single-guide/', single_guide, name='guide_detail')
+    path('paper-<int:pid>', single_guide, name='guide_detail')
 ]

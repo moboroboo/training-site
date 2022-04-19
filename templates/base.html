@@ -51,7 +51,7 @@
                 </a>
             </div>
             <div class="buy-button">
-                <a href="{% url 'guide:guide_detail' %}" target="_blank" class="btn btn-primary">از اینجا شروع
+                <a href="{% url 'guide:guide_detail' pid=1 %}" target="_blank" class="btn btn-primary">از اینجا شروع
                     کن</a>
             </div>
             <!--end login button-->
@@ -78,7 +78,7 @@
                         <a href="{% url 'guide:guide_list' %}">راهنمایی</a><span class="sub-menu-item"></span>
                     </li>
                     <li class="has-submenu parent-parent-menu-item">
-                        <a href="{% url 'blog:blog_list' %}">بلاگ </a><span class="sub-menu-item"></span>
+                        <a href="{% url 'blog:blog_list' %}">وبلاگ </a><span class="sub-menu-item"></span>
                     </li>
                     <li class="has-submenu parent-menu-item">
                         <a href="{% url 'website:about' %}">درباره ما </a><span class="sub-menu-item"></span>

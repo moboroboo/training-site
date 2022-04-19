@@ -1,5 +1,5 @@
 from django.contrib import admin
-from guide.models import Paper
+from guide.models import Paper, Category
 
 class PaperAdmin(admin.ModelAdmin):
     date_hierarchy = 'published_date'
@@ -8,4 +8,5 @@ class PaperAdmin(admin.ModelAdmin):
     list_filter = ('status', 'published_date', )
     search_fields = ['title', 'content']
 
+admin.site.register(Category)
 admin.site.register(Paper, PaperAdmin)
