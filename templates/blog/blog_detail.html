@@ -51,11 +51,13 @@
             <!-- BLog Start -->
             <div class="col-lg-8 col-md-6">
                 <div class="card blog blog-detail border-0 shadow rounded">
-                    <img src="{% static 'images/blog/01.jpg' %}" class="img-fluid rounded-top" alt="">
+                    <img src="{{post.image.url}}" class="img-fluid rounded-top" alt="">
                     <div class="card-body content">
-                        <h6><i class="mdi mdi-tag text-primary me-1"></i><a href="javscript:void(0)"
-                                class="text-primary">نرم افزار </a>, <a href="javscript:void(0)" class="text-primary">
-                                اپلیکیشن </a></h6>
+                        <h6><i class="mdi mdi-tag text-primary me-1"></i>
+                            {% for cat in post.category.all %}
+                            <a href="#"class="text-primary">{{cat.name}}</a>{% if not forloop.last %},{% endif %}
+                            {% endfor %}
+                        </h6>
                         <p class="text-muted mt-3">مشهورترین متن ساختگی "لورم ایپسوم " است که گفته می شود از قرن 16
                             پدید آمده است. لورم ایپسوم در یک زبان شبه لاتین ساخته شده است که کم و بیش با لاتین
                             "مناسب" مطابقت دارد. این شامل یک سری کلمات واقعی لاتین است. این متن ساختگی باستانی نیز

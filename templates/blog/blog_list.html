@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load jalali_tags %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -63,7 +64,7 @@
                             <div class="author">
                                 <small class="text-light user d-block"><i class="uil uil-user"></i>{{ post.author.get_full_name|default:post.author.username }}
                                     </small>
-                                <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{post.jalali_date}}</small>
+                                <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{ post.published_date|to_jalali:'%y/%m/%d' }}</small>
                             </div>
                         </div>
                     </div>
