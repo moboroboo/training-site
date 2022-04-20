@@ -1,6 +1,7 @@
 from django.db import models
 from jalali_date import datetime2jalali, date2jalali
 from django.contrib.auth.models import User
+from django_jalali.db import models as jmodels
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -21,7 +22,7 @@ class Paper(models.Model):
     # tag = 
     counted_views = models.IntegerField(default=0, verbose_name='تعداد بازدید')
     status = models.BooleanField(default=False, verbose_name='وضعیت')
-    published_date = models.DateTimeField(null=True, blank=True, verbose_name='تاریخ انتشار')
+    published_date = jmodels.jDateTimeField(null=True, blank=True, verbose_name='تاریخ انتشار')
     created_date = models.DateTimeField(auto_now_add=True, verbose_name='تاریخ ایجاد')
     updated_date = models.DateTimeField(auto_now=True, verbose_name='تاریخ به روز رسانی')
 

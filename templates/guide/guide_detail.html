@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load jalali_tags %}
+{% load jformat %}
 
 {% block content %}
     <!-- Hero Start -->
@@ -68,7 +68,7 @@
                                 <li class="list-inline-item user me-2"><a href="javascript:void(0)"
                                         class="text-muted"><i class="uil uil-user text-dark"></i> {{ paper.translator.get_full_name|default:paper.translator.username }}</a></li>
                                 <li class="list-inline-item date text-muted"><i
-                                        class="uil uil-calendar-alt text-dark"></i>{{ paper.published_date|to_jalali:'%y/%m/%d' }}</li>
+                                        class="uil uil-calendar-alt text-dark"></i>{{ post.published_date|jformat:"%A %d %B %Y" }}</li>
                             </ul>
 
                             <img src="{{paper.image.url}}" class="img-fluid rounded-md shadow" alt="">

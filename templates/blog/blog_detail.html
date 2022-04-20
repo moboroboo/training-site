@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load jalali_tags %}
+{% load jformat %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -13,7 +13,7 @@
                     <ul class="list-unstyled mt-4">
                         <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i>{{ post.author.get_full_name|default:post.author.username }}
                             </li>
-                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i>{{ post.published_date|to_jalali:'%y/%m/%d' }}</li>
+                        <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i>{{ post.published_date|jformat:"%A %d %B %Y" }}</li>
                     </ul>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
@@ -67,7 +67,7 @@
                         <div class="post-meta mt-3">
                             <ul class="list-unstyled mb-0">
                                 <li class="list-inline-item me-2 mb-0"><a href="javascript:void(0)"
-                                        class="text-muted like"><i class="uil uil-heart me-1"></i>{{post.jalali_date}}</a></li>
+                                        class="text-muted like"><i class="uil uil-heart me-1"></i>{{ post.published_date|jformat:"%A %d %B" }}</a></li>
                             </ul>
                         </div>
                     </div>

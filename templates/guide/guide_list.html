@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-{% load jalali_tags %}
+{% load jformat %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -52,7 +52,7 @@
                                     <img src="{{paper.image.url}}" class="img-fluid" alt="لطفا صفحه مرورگر خود را رفرش کنید">
                                     <div class="overlay bg-dark"></div>
                                     <div class="author">
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{ paper.published_date|to_jalali:'%y/%m/%d' }}
+                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{ post.published_date|jformat:"%A %d %B %Y" }}
                                             </small>
                                     </div>
                                 </div>
@@ -127,10 +127,6 @@
                             <h5 class="widget-title">دسته بندیها </h5>
                             <ul class="list-unstyled mt-4 mb-0 blog-categories">
                                 <li><a href="jvascript:void(0)">مالی </a> <span class="float-end">13</span></li>
-                                <li><a href="jvascript:void(0)">شرکتی </a> <span class="float-end">90 </span></li>
-                                <li><a href="jvascript:void(0)">وبلاگ </a> <span class="float-end">18</span></li>
-                                <li><a href="jvascript:void(0)">کسب و کار</a> <span class="float-end">20</span></li>
-                                <li><a href="jvascript:void(0)">سرمایه گذاری </a> <span class="float-end">22</span></li>
                             </ul>
                         </div>
                         <!-- Categories -->
@@ -146,21 +142,6 @@
                                     <div class="post-recent-content float-start"><a href="jvascript:void(0)">مشاوره
                                             شرکتی </a><span class="text-muted mt-2">اردیبهشت 1400</span></div>
                                 </div>
-                                <div class="clearfix post-recent">
-                                    <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                                                alt="img" src="{% static 'images/blog/08.jpg' %}"
-                                                class="img-fluid rounded"></a></div>
-                                    <div class="post-recent-content float-start"><a href="jvascript:void(0)">به تعادل
-                                            باشکوه نگاه کنید</a> <span class="text-muted mt-2">اردیبهشت 1400</span>
-                                    </div>
-                                </div>
-                                <div class="clearfix post-recent">
-                                    <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                                                alt="img" src="{% static 'images/blog/01.jpg' %}"
-                                                class="img-fluid rounded"></a></div>
-                                    <div class="post-recent-content float-start"><a href="jvascript:void(0)">تحقیقات
-                                            مالی.</a> <span class="text-muted mt-2">اردیبهشت 1400</span></div>
-                                </div>
                             </div>
                         </div>
                         <!-- پست های اخیر -->
@@ -170,15 +151,6 @@
                             <h5 class="widget-title">برچسب های ابری</h5>
                             <div class="tagcloud mt-4">
                                 <a href="jvascript:void(0)" class="rounded">کسب و کار </a>
-                                <a href="jvascript:void(0)" class="rounded">مالی </a>
-                                <a href="jvascript:void(0)" class="rounded">بازاریابی</a>
-                                <a href="jvascript:void(0)" class="rounded">مدل </a>
-                                <a href="jvascript:void(0)" class="rounded"> عروس </a>
-                                <a href="jvascript:void(0)" class="rounded">سبک زندگی </a>
-                                <a href="jvascript:void(0)" class="rounded">مسافرت </a>
-                                <a href="jvascript:void(0)" class="rounded">زیبایی </a>
-                                <a href="jvascript:void(0)" class="rounded">ویدئو </a>
-                                <a href="jvascript:void(0)" class="rounded">صدا </a>
                             </div>
                         </div>
                         <!-- TAG CLOUDS -->
