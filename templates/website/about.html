@@ -60,7 +60,7 @@
                                 شود که بعداً با محتوای واقعی پر خواهد شد. این مورد زمانی الزامی است که مثلاً متن نهایی
                                 هنوز در دسترس نیست. متون ساختگی از قرن شانزدهم مورد استفاده حروفچینی ها قرار گرفته اند.
                             </p>
-                            <a href="javascript:void(0)" class="btn btn-primary mt-3">تماس با ما</a>
+                            <a href="{% url 'website:contact' %}" class="btn btn-primary mt-3">تماس با ما</a>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             <a class="nav-link rounded active" id="webdeveloping" data-bs-toggle="pill"
                                 href="#developing" role="tab" aria-controls="developing" aria-selected="false">
                                 <div class="text-center py-1">
-                                    <h6 class="mb-0">تحقیقات</h6>
+                                    <h6 class="mb-0">مقالات</h6>
                                 </div>
                             </a>
                             <!--end nav link-->
@@ -124,16 +124,6 @@
                         </li>
                         <!--end nav item-->
 
-                        <li class="nav-item mt-2">
-                            <a class="nav-link rounded" id="server" data-bs-toggle="pill" href="#security" role="tab"
-                                aria-controls="security" aria-selected="false">
-                                <div class="text-center py-1">
-                                    <h6 class="mb-0">پادکست</h6>
-                                </div>
-                            </a>
-                            <!--end nav link-->
-                        </li>
-                        <!--end nav item-->
 
                         <li class="nav-item mt-2">
                             <a class="nav-link rounded" id="webdesigning" data-bs-toggle="pill" href="#designing"
@@ -159,7 +149,7 @@
                                 <p class="text-muted">این مورد زمانی الزامی است که مثلاً متن نهایی هنوز در دسترس نیست.
                                     متن ساختگی به عنوان 'متن پر نیز شناخته می شود'. گفته می شود که آهنگسازان آهنگ های
                                     گذشته از متن ساختگی به عنوان شعر استفاده می کردند.</p>
-                                <a href="javascript:void(0)" class="text-primary">نمایش بیشتر <i
+                                <a href="{% url 'guide:guide_list' %}" class="text-primary">نمایش بیشتر <i
                                         class="uil uil-angle-left-b align-middle"></i></a>
                             </div>
                         </div>
@@ -172,20 +162,7 @@
                                 <p class="text-muted">این مورد زمانی الزامی است که مثلاً متن نهایی هنوز در دسترس نیست.
                                     متن ساختگی به عنوان 'متن پر نیز شناخته می شود'. گفته می شود که آهنگسازان آهنگ های
                                     گذشته از متن ساختگی به عنوان شعر استفاده می کردند.</p>
-                                <a href="javascript:void(0)" class="text-primary">نمایش بیشتر <i
-                                        class="uil uil-angle-left-b align-middle"></i></a>
-                            </div>
-                        </div>
-                        <!--end teb pane-->
-
-                        <div class="tab-pane fade bg-white p-4 rounded shadow" id="security" role="tabpanel"
-                            aria-labelledby="server">
-                            <img src="{% static 'images/work/9.jpg' %}" class="img-fluid rounded shadow" alt="">
-                            <div class="mt-4">
-                                <p class="text-muted">این مورد زمانی الزامی است که مثلاً متن نهایی هنوز در دسترس نیست.
-                                    متن ساختگی به عنوان 'متن پر نیز شناخته می شود'. گفته می شود که آهنگسازان آهنگ های
-                                    گذشته از متن ساختگی به عنوان شعر استفاده می کردند.</p>
-                                <a href="javascript:void(0)" class="text-primary">نمایش بیشتر <i
+                                <a href="{% url 'blog:blog_list' %}" class="text-primary">نمایش بیشتر <i
                                         class="uil uil-angle-left-b align-middle"></i></a>
                             </div>
                         </div>
@@ -198,7 +175,7 @@
                                 <p class="text-muted">این مورد زمانی الزامی است که مثلاً متن نهایی هنوز در دسترس نیست.
                                     متن ساختگی به عنوان 'متن پر نیز شناخته می شود'. گفته می شود که آهنگسازان آهنگ های
                                     گذشته از متن ساختگی به عنوان شعر استفاده می کردند.</p>
-                                <a href="javascript:void(0)" class="text-primary">نمایش بیشتر <i
+                                <a href="{% url 'website:contact' %}" class="text-primary">نمایش بیشتر <i
                                         class="uil uil-angle-left-b align-middle"></i></a>
                             </div>
                         </div>

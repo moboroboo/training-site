@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load jformat %}
+{% load blog_tags %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -11,7 +12,7 @@
                 <div class="page-next-level">
                     <h2>{{post.title}}</h2>
                     <ul class="list-unstyled mt-4">
-                        <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i>{{ post.author.get_full_name|default:post.author.username }}
+                        <li class="list-inline-item h6 user text-muted me-2"><i class="mdi mdi-account"></i><a href="{% url 'blog:blog_author' author_username=post.author.username %}">{{ post.author.get_full_name|default:post.author.username }}</a>
                             </li>
                         <li class="list-inline-item h6 date text-muted"><i class="mdi mdi-calendar-check"></i>{{ post.published_date|jformat:"%A %d %B %Y" }}</li>
                     </ul>
@@ -316,11 +317,11 @@
                         <!-- SEARCH -->
 
                         <!-- Categories -->
-                        {% include 'blog/blog_category.html' %}
+                        {% categories %}
                         <!-- Categories -->
 
                         <!-- پست های اخیر -->
-                        {% include 'blog/blog_recent_posts.html' %}
+                        {% latest_posts %}
                         <!-- پست های اخیر -->
 
                         <!-- TAG CLOUDS -->

@@ -1,0 +1,19 @@
+{% load static %}
+{% load blog_tags %}
+{% load jformat %}
+
+<div class="widget mb-4 pb-2">
+    <h5 class="widget-title">پست های اخیر</h5>
+    {% for paper in papers %}
+    <div class="mt-4">
+        <div class="clearfix post-recent">
+            <div class="post-recent-thumb float-start"> <a href="{% url 'guide:guide_detail' pid=paper.id %}"> <img
+                        alt="img" src="{{paper.image.url}}"
+                        class="img-fluid rounded"></a>
+            </div>
+            <div class="post-recent-content float-start"><a href="{% url 'guide:guide_detail' pid=paper.id %}">{{paper.title}}
+                     </a><span class="text-muted mt-2">{{ paper.published_date|jformat:"%A %d %B %Y" }}</span></div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

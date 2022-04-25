@@ -28,7 +28,7 @@ class Post(models.Model):
     updated_date = models.DateTimeField(auto_now=True, verbose_name='تاریخ به روز رسانی')
 
     class Meta:
-        ordering = ('-created_date',)
+        ordering = ('-published_date',)
         verbose_name = 'پست'
         verbose_name_plural = 'پست ها'
 

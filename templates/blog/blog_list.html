@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load jformat %}
+{% load blog_tags %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -74,13 +75,25 @@
                     <!-- PAGINATION START -->
                     <div class="col-12">
                         <ul class="pagination justify-content-center mb-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)"
-                                    aria-label="Previous">قبلی </a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">بعدی
-                                </a></li>
+                            {% if posts.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ posts.previous_page_number }}"aria-label="Previous">قبلی </a></li>
+                            {% else %}
+                                <li class="page-item disabled"><a class="page-link" aria-label="Previous">قبلی </a></li>
+                            {% endif %}
+
+                            {% for i in posts.paginator.page_range %}
+                                {% ifequal i posts.number %}
+                                    <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                {% endifequal %}
+                            {% endfor %}
+                            
+                            {% if posts.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ posts.next_page_number }}" aria-label="Next">بعدی</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" aria-label="Next">بعدی</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!--end col-->
@@ -100,11 +113,11 @@
                         <!-- SEARCH -->
 
                         <!-- Categories -->
-                        {% include 'blog/blog_category.html' %}
+                        {% categories %}
                         <!-- Categories -->
 
                         <!-- پست های اخیر -->
-                        {% include 'blog/blog_recent_posts.html' %}
+                        {% latest_posts %}
                         <!-- پست های اخیر -->
 
                         <!-- TAG CLOUDS -->

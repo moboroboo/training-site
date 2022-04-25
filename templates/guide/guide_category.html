@@ -1,12 +1,10 @@
 {% load static %}
-{% load blog_tags %}
 
 <div class="widget mb-4 pb-2">
     <h5 class="widget-title">دسته بندیها </h5>
     {% for name, count in categories.items %}
     <ul class="list-unstyled mt-4 mb-0 blog-categories">
-        <li><a href="{% url 'blog:blog_category' cat_name=name %}">{{name}}</a> <span class="float-end">{{count}}</span></li>
-        </li>
+        <li><a href="{% url 'guide:guide_category' cat_name=name %}">{{name}}</a> <span class="float-end">{{count}}</span></li>
     </ul>
     {% endfor %}
 </div>

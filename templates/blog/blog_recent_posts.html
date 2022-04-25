@@ -1,15 +1,19 @@
 {% load static %}
+{% load blog_tags %}
+{% load jformat %}
 
 <div class="widget mb-4 pb-2">
     <h5 class="widget-title">پست های اخیر</h5>
+    {% for post in posts %}
     <div class="mt-4">
         <div class="clearfix post-recent">
-            <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                        alt="img" src="{% static 'images/blog/07.jpg' %}"
+            <div class="post-recent-thumb float-start"> <a href="{% url 'blog:blog_detail' pid=post.id %}"> <img
+                        alt="img" src="{{post.image.url}}"
                         class="img-fluid rounded"></a>
             </div>
-            <div class="post-recent-content float-start"><a href="jvascript:void(0)">مشاوره
-                    شرکتی </a><span class="text-muted mt-2">اردیبهشت 1400</span></div>
+            <div class="post-recent-content float-start"><a href="{% url 'blog:blog_detail' pid=post.id %}">{{post.title}}
+                     </a><span class="text-muted mt-2">{{ post.published_date|jformat:"%A %d %B %Y" }}</span></div>
         </div>
     </div>
+    {% endfor %}
 </div>

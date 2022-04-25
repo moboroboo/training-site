@@ -27,7 +27,7 @@ class Paper(models.Model):
     updated_date = models.DateTimeField(auto_now=True, verbose_name='تاریخ به روز رسانی')
 
     class Meta:
-        ordering = ('-created_date',)
+        ordering = ('-published_date',)
         verbose_name = 'مقاله'
         verbose_name_plural = 'مقاله ها'
         

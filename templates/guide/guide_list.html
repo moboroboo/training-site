@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load jformat %}
+{% load guide_tags %}
 
 {% block content %}
 <!-- Hero Start -->
@@ -9,7 +10,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-12 text-center">
                 <div class="page-next-level">
-                    <h4 class="title">مقاله های ترجمه شده</h4>
+                    <h4 class="title">مقالات</h4>
                     <div class="page-next">
                         <nav aria-label="breadcrumb" class="d-inline-block">
                             <ul class="breadcrumb bg-white rounded shadow mb-0">
@@ -52,8 +53,9 @@
                                     <img src="{{paper.image.url}}" class="img-fluid" alt="لطفا صفحه مرورگر خود را رفرش کنید">
                                     <div class="overlay bg-dark"></div>
                                     <div class="author">
-                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{ post.published_date|jformat:"%A %d %B %Y" }}
+                                        <small class="text-light user d-block"><i class="uil uil-user"></i>مترجم : {{ paper.translator.get_full_name }}
                                             </small>
+                                        <small class="text-light date"><i class="uil uil-calendar-alt"></i>{{ paper.published_date|jformat:"%A %d %B %Y" }}</small>
                                     </div>
                                 </div>
                                 <!--end col-->
@@ -88,13 +90,25 @@
                     <!-- PAGINATION START -->
                     <div class="col-12">
                         <ul class="pagination justify-content-center mb-0">
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)"
-                                    aria-label="Previous">قبلی </a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void(0)">1</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void(0)" aria-label="Next">بعدی
-                                </a></li>
+                            {% if papers.has_previous %}
+                                <li class="page-item"><a class="page-link" href="?page={{ papers.previous_page_number }}"aria-label="Previous">قبلی </a></li>
+                            {% else %}
+                                <li class="page-item disabled"><a class="page-link" aria-label="Previous">قبلی </a></li>
+                            {% endif %}
+
+                            {% for i in papers.paginator.page_range %}
+                                {% ifequal i papers.number %}
+                                    <li class="page-item active"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                {% else %}
+                                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                                {% endifequal %}
+                            {% endfor %}
+                            
+                            {% if papers.has_next %}
+                                <li class="page-item"><a class="page-link" href="?page={{ papers.next_page_number }}" aria-label="Next">بعدی</a></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" aria-label="Next">بعدی</a></li>
+                            {% endif %}
                         </ul>
                     </div>
                     <!--end col-->
@@ -110,72 +124,23 @@
                 <div class="card border-0 sidebar sticky-bar rounded shadow">
                     <div class="card-body">
                         <!-- SEARCH -->
-                        <div class="widget">
-                            <form role="search" method="get">
-                                <div class="input-group mb-3 border rounded">
-                                    <input type="text" id="s" name="s" class="form-control border-0"
-                                        placeholder="جستجوی کلمه کلیدی...">
-                                    <button type="submit" class="input-group-text bg-transparent border-0"
-                                        id="searchsubmit"><i class="uil uil-search"></i></button>
-                                </div>
-                            </form>
-                        </div>
+                        {% include 'guide/guide_search.html' %}
                         <!-- SEARCH -->
 
                         <!-- Categories -->
-                        <div class="widget mb-4 pb-2">
-                            <h5 class="widget-title">دسته بندیها </h5>
-                            <ul class="list-unstyled mt-4 mb-0 blog-categories">
-                                <li><a href="jvascript:void(0)">مالی </a> <span class="float-end">13</span></li>
-                            </ul>
-                        </div>
+                        {% categories %}
                         <!-- Categories -->
 
                         <!-- پست های اخیر -->
-                        <div class="widget mb-4 pb-2">
-                            <h5 class="widget-title">پست های اخیر</h5>
-                            <div class="mt-4">
-                                <div class="clearfix post-recent">
-                                    <div class="post-recent-thumb float-start"> <a href="jvascript:void(0)"> <img
-                                                alt="img" src="{% static 'images/blog/07.jpg' %}"
-                                                class="img-fluid rounded"></a></div>
-                                    <div class="post-recent-content float-start"><a href="jvascript:void(0)">مشاوره
-                                            شرکتی </a><span class="text-muted mt-2">اردیبهشت 1400</span></div>
-                                </div>
-                            </div>
-                        </div>
+                        {% latest_posts %}
                         <!-- پست های اخیر -->
 
                         <!-- TAG CLOUDS -->
-                        <div class="widget mb-4 pb-2">
-                            <h5 class="widget-title">برچسب های ابری</h5>
-                            <div class="tagcloud mt-4">
-                                <a href="jvascript:void(0)" class="rounded">کسب و کار </a>
-                            </div>
-                        </div>
+                        {% include 'guide/guide_tags.html' %}
                         <!-- TAG CLOUDS -->
 
                         <!-- SOCIAL -->
-                        <div class="widget">
-                            <h5 class="widget-title">دنبال کردن ما</h5>
-                            <ul class="list-unstyled social-icon mb-0 mt-4">
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="facebook" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="instagram" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="twitter" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="linkedin" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="github" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="youtube" class="fea icon-sm fea-social"></i></a></li>
-                                <li class="list-inline-item"><a href="javascript:void(0)" class="rounded"><i
-                                            data-feather="gitlab" class="fea icon-sm fea-social"></i></a></li>
-                            </ul>
-                            <!--end icon-->
-                        </div>
+                        {% include 'guide/guide_social.html' %}
                         <!-- SOCIAL -->
                     </div>
                 </div>
